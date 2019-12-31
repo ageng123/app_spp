@@ -12,6 +12,9 @@ class ManajemenUser extends Model
     protected $fillable = [
         'nomor_induk', 'username', 'password', 'last_login'
     ];
+    protected $hidden = [
+        'password'
+    ];
     public function Detail(){
         return $this->belongsTo(du::class, 'id','id_user');
     }

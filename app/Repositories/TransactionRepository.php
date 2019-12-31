@@ -10,11 +10,20 @@ class TransactionRepository
 {
     protected $status;
     protected $user;
+    protected $request;
     protected $jabatan;
     public function __construct(Status_Transaksi $st, Request $r){
         $this->status = $st;
-        $this->user = $r->session()->get('id_user');
-        $this->jabatan = $r->session()->get('role');
+        $this->request = $r;
+        // $this->user = $r->session()->get('id_user');
+        $this->user = session('id_user');
+        $this->user = session('id_user');
+
+        // $this->jabatan = $r->session()->get('role');
+    }
+    public function findById($id){
+            $model = Status_Transaksi::findOrfail($id);
+            return $model;
     }
     public function getall()
     {

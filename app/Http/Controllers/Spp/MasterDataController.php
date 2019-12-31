@@ -33,7 +33,7 @@ class MasterDataController extends Controller
         $data = [
             'row' => $rows
         ];
-        return view('templates.pages.Spp.Approved')->with($data);
+        return view('templates.pages.Spp.Index')->with($data);
     }
 
     /**

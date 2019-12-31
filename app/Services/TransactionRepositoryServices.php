@@ -11,6 +11,9 @@ class TransactionRepositoryServices
     {
         $this->transaction = $tr;
     }
+    public function findById($id){
+        return $this->transaction->findById($id);
+    }
     public function getAll()
     {
         return $this->transaction->getAll();

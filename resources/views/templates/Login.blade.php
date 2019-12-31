@@ -2,13 +2,14 @@
 @section('app-title', 'Login')
 @section('cardtitle', 'Login Aplikasi SPP')
 @section('loginform')
-<form method="POST">
+<form method="POST" action="{{route('auth.check', ['check' => mt_rand(1, 1000)])}}">
+    @csrf
     <fieldset class="uk-fieldset">
 
         <div class="uk-margin">
             <div class="uk-position-relative">
                 <span class="uk-form-icon ion-android-person"></span>
-                <input name="email" class="uk-input" type="text" placeholder="Username">
+                <input name="username" class="uk-input" type="text" placeholder="Username">
             </div>
         </div>
 
