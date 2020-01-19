@@ -21,5 +21,9 @@ class AuthController extends Controller
           return $this->checker->authCheck();
         }
     }
+    public function logout()
+    {
+        return $this->checker->logout();
+    }
     //
 }

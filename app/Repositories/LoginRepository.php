@@ -51,11 +51,19 @@ class LoginRepository
                 Session::flush();
                 Session::put($checkUsername->toArray());
                 return redirect(route('Semua.index'));
+            } else {
+                return redirect()->back()->with('message', 'Password anda salah');
             }
         } else {
-            return redirect()->back()->with('message', 'username anda salah');
+            return redirect()->back()->with('message', 'username tidak ditemukan');
         }
 
+    }
+    public function logout()
+    {
+       $logout = Session::flush();
+       return redirect(route('auth.login'));
+        
     }
 }
 ?>

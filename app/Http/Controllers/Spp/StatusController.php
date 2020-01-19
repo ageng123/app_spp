@@ -14,6 +14,8 @@ use App\Jurusan as j;
 use App\Kelas as k;
 use App\Karyawan as kar;
 use App\Role as r;
+use Session;
+
 
 class StatusController extends Controller
 {
@@ -30,8 +32,10 @@ class StatusController extends Controller
     public function index()
     {
         $rows = $this->model->getStatus();
+        $jabatan_user = Session::get('role');
         $data = [
-            'row' => $rows
+            'row' => $rows,
+            'jabatan' => $jabatan_user
         ];
         return view('templates.pages.Spp.Status')->with($data);
     }

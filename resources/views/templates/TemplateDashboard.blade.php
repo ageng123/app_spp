@@ -12,6 +12,8 @@
     <link href="{{ asset('css/uikit.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/notyf.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     @yield('stylesheet')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -40,7 +42,7 @@
                                     <li><a href="#">Edit Profile</a></li>
                                     <li><a href="">Change Password</a></li>
                                     <li class="uk-nav-header">Actions</li>
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="{{route('auth.logout')}}">Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -73,9 +75,10 @@
                 @elseif(Session::get('jabatan') == 'SuperAdmin' or Session::get('nik') != null)
                     <li><a href="{{route('Semua.create')}}"><span class="uk-margin-small-right" uk-icon="icon: plus"></span> Tambah Data Pembayaran</a></li>
                     <li><a href="{{route('Semua.index')}}"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Data Pembayaran SPP</a></li>
+                    <li><a href="{{route('Status.index')}}"><span class="uk-margin-small-right" uk-icon="icon: future"></span> SPP perlu diproses</a></li>
                     <li><a href="{{route('Approve.index')}}"><span class="uk-margin-small-right" uk-icon="icon: check"></span> Approve Pembayaran SPP</a></li>
                     <li><a href="{{route('Reject.index')}}"><span class="uk-margin-small-right" uk-icon="icon: close"></span> Reject Pembayaran SPP</a></li>
-                    <li><a href="{{route('Status.index')}}"><span class="uk-margin-small-right" uk-icon="icon: future"></span> Status Pembayaran SPP</a></li>
+                    <li><a href="{{route('Status.index')}}"><span class="uk-margin-small-right" uk-icon="icon: history"></span> Status Pembayaran SPP</a></li>
                     <li><a href="{{route('Draft.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Draft Pembayaran SPP</a></li>
                 @endif()
                
@@ -115,6 +118,8 @@
     <script src="{{asset('js/script.js')}}"></script>
     <script src="{{asset('js/status.js')}}"></script>
     <script src="{{asset('js/notification.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @yield('javascript')
 
 </body>

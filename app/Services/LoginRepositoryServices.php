@@ -13,5 +13,9 @@ class LoginRepositoryServices
     {
         return $this->lr->checkLogin();
     }
+    public function logout()
+    {
+        return $this->lr->logout();
+    }
 }
 ?>

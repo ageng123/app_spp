@@ -2,6 +2,9 @@
 @section('app-title', 'Login')
 @section('cardtitle', 'Login Aplikasi SPP')
 @section('loginform')
+@if(session('message'))
+<script>UIkit.notification({message: '{{session("message")}}', pos: 'top-right',  status: 'danger'});</script>
+@endif
 <form method="POST" action="{{route('auth.check', ['check' => mt_rand(1, 1000)])}}">
     @csrf
     <fieldset class="uk-fieldset">

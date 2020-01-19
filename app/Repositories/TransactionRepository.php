@@ -16,8 +16,8 @@ class TransactionRepository
         $this->status = $st;
         $this->request = $r;
         // $this->user = $r->session()->get('id_user');
-        $this->user = session('id_user');
-        $this->user = session('id_user');
+        $this->user = session('id');
+        $this->jabatan = session('role');
 
         // $this->jabatan = $r->session()->get('role');
     }

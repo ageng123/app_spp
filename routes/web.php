@@ -19,6 +19,7 @@ Route::group(['prefix' => 'auth'], function(){
         return view('templates.login');
     })->name('auth.login');
     Route::post('/check/{check}', 'CustomAuth\AuthController@auth')->name('auth.check');
+    Route::get('/logout', 'CustomAuth\AuthController@logout')->name('auth.logout');
 });
 Route::group(['prefix' => 'dashboard'], function(){
     Route::get('/home', function(){
@@ -45,6 +46,7 @@ Route::group(['prefix' => 'masterdata', 'middleware' => ['check']], function(){
 });
         Route::group(['prefix' => 'spp', 'middleware' => ['check']], function(){
         // if(session('nisn') && session('jabatan')){
+        Route::post('Semua/create', 'Spp\MasterDataController@create')->name('Semua.create');
         Route::resource('Semua','Spp\MasterDataController');
         Route::resource('Draft','Spp\DraftController');
         Route::resource('Status','Spp\StatusController');
@@ -54,3 +56,5 @@ Route::group(['prefix' => 'masterdata', 'middleware' => ['check']], function(){
         //     return redirect('auth.login');
         // }
 });
+Route::get('Semua/print', 'Spp\MasterDataController@print')->name('Semua.print');
+Route::post('Semua/print', 'Spp\MasterDataController@print')->name('Semua.print');
