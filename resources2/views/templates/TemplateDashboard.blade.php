@@ -72,6 +72,8 @@
                 <ul class="uk-nav-sub">
                 @if(Session::get('role') == '1' or Session::get('role') == '2')
                     <li><a href="{{route('Semua.index')}}"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Data Pembayaran SPP</a></li>
+                    <li><a href="{{route('Semua.create')}}"><span class="uk-margin-small-right" uk-icon="icon: plus"></span> Tambah Data Pembayaran</a></li>
+
                 @elseif(Session::get('jabatan') == 'SuperAdmin' or Session::get('nik') != null)
                     <li><a href="{{route('Semua.create')}}"><span class="uk-margin-small-right" uk-icon="icon: plus"></span> Tambah Data Pembayaran</a></li>
                     <li><a href="{{route('Semua.index')}}"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Data Pembayaran SPP</a></li>
