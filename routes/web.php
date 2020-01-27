@@ -22,9 +22,7 @@ Route::group(['prefix' => 'auth'], function(){
     Route::get('/logout', 'CustomAuth\AuthController@logout')->name('auth.logout');
 });
 Route::group(['prefix' => 'dashboard'], function(){
-    Route::get('/home', function(){
-        return view('templates.pages.home.home');
-    })->name('auth.home')->middleware('check');
+    Route::get('/home', 'Dashboard\home@index')->name('auth.home')->middleware('check');
     
 });
 Route::group(['prefix' => 'masterdata', 'middleware' => ['check']], function(){
@@ -52,6 +50,7 @@ Route::group(['prefix' => 'masterdata', 'middleware' => ['check']], function(){
         Route::resource('Status','Spp\StatusController');
         Route::resource('Approve','Spp\ApprovedController');
         Route::resource('Reject','Spp\RejectController');
+        Route::resource('Proses', 'Spp\ProsesController');
         // } else {
         //     return redirect('auth.login');
         // }

@@ -1,6 +1,6 @@
 @extends('templates.templatelogin')
 @section('app-title', 'Login')
-@section('cardtitle', 'Login Aplikasi SPP')
+@section('cardtitle', 'Login Aplikasi')
 @section('loginform')
 @if(session('message'))
 <script>UIkit.notification({message: '{{session("message")}}', pos: 'top-right',  status: 'danger'});</script>

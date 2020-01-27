@@ -90,7 +90,7 @@ class MasterSiswaController extends Controller
         } else {
             $data = [
                 'form' => $form,
-                'form_title' => 'Tambah Master Data Siswa',
+                'form_title' => 'Tambah Master Data Mahasiswa',
                 'edit' => false
             ];
             return view('templates.pages.MasterData.AddMasterSiswa')->with($data);

@@ -38,6 +38,8 @@ class MasterDataController extends Controller
      */
     public function index()
     {
+        // dd(Session::all());
+        // die;
         $rows = $this->model->getAll();
         $rows->loadMissing('Konseptor', 'Siswa', 'Ot', 'Status', 'JabatanKonseptor', 'JabatanApprover');
         $data = [
@@ -75,11 +77,11 @@ class MasterDataController extends Controller
                     $model->tahun_ajaran = $request->tahun_ajaran;
                     $model->status = '2';
                     $model->tgl_submit = date('Y-m-d H:i:s');
-                    $model->bayar = '200000';
+                    $model->bayar = ($request->bayar / count($request->bulan));
                     $model->save();
                     $save = 'success';
                 };
-                dd($save);
+                // dd($save);
                if($save == 'success'){
                     return redirect()->back();
                 } else {

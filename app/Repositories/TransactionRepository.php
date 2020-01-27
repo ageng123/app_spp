@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Transaksi as Status_Transaksi;
 use Illuminate\Http\Request;
-
+use Session;
 
 class TransactionRepository
 {
@@ -16,7 +16,7 @@ class TransactionRepository
         $this->status = $st;
         $this->request = $r;
         // $this->user = $r->session()->get('id_user');
-        $this->user = session('id');
+        $this->user = session('id') ;
         $this->jabatan = session('role');
 
         // $this->jabatan = $r->session()->get('role');
@@ -27,11 +27,20 @@ class TransactionRepository
     }
     public function getall()
     {
+        $params = null;
+        if($this->jabatan == 1){
+            $params = Session::get('detail.siswa.id');
+        }
+        if($this->jabatan == 99 || $this->jabatan == 3){
+            return $this->status->get();
+            die;
+        }
         return $this->status
             ->where('konseptor_nama', '=', $this->user)
             ->orWhere('konseptor_jabatan', '=', $this->jabatan)
             ->orWhere('approver_nama', '=', $this->user)
             ->orWhere('approver_jabatan', '=', $this->jabatan)
+            ->orWhere('nama_siswa', '=', $params)
             ->get();
     }
     public function getTransaksiByStatus($status){
@@ -49,6 +58,13 @@ class TransactionRepository
         }
         )->get();
     }
+    public function prosesData($status){
+        $user_id = $this->user;
+        $jabatan_id = $this->jabatan;
+        return $this->status->where(function($query) use($user_id, $status){
+            $query->where('status', '=', $status);
+        })->get();
+    }
     public function getDraft(){
         $status = '1';
         return $this->getTransaksiByStatus($status);
@@ -64,6 +80,10 @@ class TransactionRepository
     public function getApproved(){
         $status = '4';
         return $this->getTransaksiByStatus($status);
+    }
+    public function getProses(){
+        $status = '2';
+        return $this->prosesData($status);
     }
     
 }

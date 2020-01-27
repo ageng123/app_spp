@@ -1,5 +1,5 @@
 @extends('templates.TemplateMasterData')
-@section('app-title', 'Master Siswa')
+@section('app-title', 'Master Mahasiswa')
 @section('table-title')
     @if($form_title)
         {{$form_title}}
@@ -12,7 +12,7 @@
 <script>UIkit.notification({message: '{{session("message")}}', pos: 'top-right',  status: 'danger'});</script>
 @endif
     {!! form_start($form) !!}
-    <legend class="uk-legend uk-text-center">Data Siswa</legend>
+    <legend class="uk-legend uk-text-center">Data Mahasiswa</legend>
     {!! form_until($form, 'kelas') !!}
     <legend class="uk-legend uk-text-center" style="margin-top: 1vh">Data Orang Tua</legend>
     @if($edit == true)

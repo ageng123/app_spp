@@ -19,6 +19,7 @@ class MasterPassword extends Controller
     public function index()
     {
         $mu = mu::with(['Detail', 'Detail.OT', 'Detail.Siswa', 'Detail.Karyawan', 'Detail.Role'])->get();
+        // dd($mu->toArray()); 
         $data = [
             'row' => $mu
         ];

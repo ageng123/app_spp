@@ -52,6 +52,7 @@ class MasterKaryawanController extends Controller
                 $model->jk = $request->jk;
                 $model->no_telp = $request->no_telp;
                 $mu = new mu;
+                $mu->nomor_induk = $request->nik;
                 $mu->username = $request->nik;
                 $mu->password = Hash::make($request->nik);
                 $mu->save();

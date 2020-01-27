@@ -34,5 +34,9 @@ class TransactionRepositoryServices
     {
         return $this->transaction->getRejected();
     }
+    public function getProses()
+    {
+        return $this->transaction->getProses();
+    }
 }
 ?>

@@ -24,15 +24,15 @@
                 <div class="uk-container uk-container-large">
                     <div uk-grid class="uk-child-width-2-3@s uk-child-width-2-3@l">
                         <div class="uk-width-1-5@s uk-width-1-5@l uk-width-1-3@xl"></div>
-                        <div class="uk-width-3-5@s uk-width-3-5@l uk-width-1-3@xl">
+                        <div class="uk-width-1-5@s uk-width-3-5@l uk-width-1-3@xl">
                             <div class="uk-card uk-card-default">
-                                <div class="uk-card-header uk-text-center blue-flat" style="text-align: center">
+                                <div class="uk-card-header uk-text-center blue-flat" style="text-align: center;">
 
-                                    <h3> @yield('cardtitle')</h3>
+                                    <h3 style="color:white !important;"> @yield('cardtitle')</h3>
                                 </div>
                                 <div class="uk-card-body">
                                     <center>
-                                    <h2 class="uk-text-large uk-text-bold">SMK PGRI 8</h2>
+                                    <h2 class="uk-text-large uk-text-bold">STIKOMCKI</h2>
                                     </center>
                                         @yield('loginform')
                                 </div>

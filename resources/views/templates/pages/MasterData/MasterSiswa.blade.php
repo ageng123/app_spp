@@ -1,6 +1,6 @@
 @extends('templates.TemplateMasterData')
-@section('app-title', 'Master Siswa')
-@section('table-title', 'Master Data Siswa')
+@section('app-title', 'Master Mahasiswa')
+@section('table-title', 'Master Data Mahasiswa')
 @section('table')
 @if(session('message'))
 <script>UIkit.notification({message: '{{session("message")}}', pos: 'top-right',  status: 'success'});</script>

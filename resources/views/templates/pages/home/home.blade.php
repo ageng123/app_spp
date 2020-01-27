@@ -3,7 +3,7 @@
 @section('body')
 <div class="uk-alert-primary" uk-alert>
     <a class="uk-alert-close" uk-close></a>
-    <p style="font-size: 20px">Selamat Datang Di Aplikasi SPP SMK PGRI</p>
+    <p style="font-size: 20px">Selamat Datang Di Aplikasi SPP STIKOM CKI</p>
 </div>
 <div uk-grid>
     <div class="uk-width-1-3@xl uk-width-1-2@m uk-width-1-1@sm">
@@ -12,7 +12,7 @@
                 <h4>Jumlah Siswa</h4>
             </div>
             <div class="uk-card-body">
-                <h1 class="uk-text-right">26</h1>
+                <h1 class="uk-text-right">{{$siswa}}</h1>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
                 <h4>Jumlah Karyawan</h4>
             </div>
             <div class="uk-card-body">
-                <h1 class="uk-text-right">26</h1>
+                <h1 class="uk-text-right">{{$karyawan}}</h1>
             </div>
         </div>
     </div>

@@ -36,6 +36,8 @@
         <td>{{$rows->Konseptor ? ($rows->Konseptor->nama_karyawan_text.' | '. $rows->JabatanKonseptor->jabatan_text) : $rows->JabatanKonseptor->jabatan_text}}</td>
     </tr>
 </table>
+{!! form_start($form) !!}
+{!! form_end($form, $renderRest = true) !!}
 @endsection
 @section('javascript')
 <script>

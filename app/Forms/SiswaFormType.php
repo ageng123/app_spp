@@ -12,7 +12,7 @@ class SiswaFormType extends Form
     {
         $this->add('nisn', Field::TEXT, [
             'rules' => 'required|min:9',
-            'label' => 'NISN Siswa',
+            'label' => 'NIM Mahasiswa',
             'data' => [],
             'label_attr' => ['class' => 'uk-form-label'],
             'attr' => ['class' => 'uk-input'],
@@ -20,7 +20,7 @@ class SiswaFormType extends Form
         ])
         ->add('nama_siswa_text', Field::TEXT, [
             'rules' => 'required',
-            'label' => 'Nama Siswa',
+            'label' => 'Nama Mahasiswa',
             'attr' => ['class' => 'uk-input'],
             'wrapper' => ['class' =>  "uk-width-1-1" ]
             
@@ -57,13 +57,13 @@ class SiswaFormType extends Form
             'rules' => 'required',
             'class' => 'App\Jurusan',
             'property' => 'jurusan_text',
-            'label' => 'Jurusan Siswa',
+            'label' => 'Jurusan',
             'attr' => ['class' => 'uk-select'],
             'wrapper' => ['class' =>  "uk-width-1-2" ]          
         ])
         ->add('kelas', 'entity', [
             'rules' => 'required',
-            'label' => 'Kelas Siswa',
+            'label' => 'Kelas',
             'class' => 'App\Kelas',
             'property' => 'kelas_text',
             'attr' => ['class' => 'uk-select'],

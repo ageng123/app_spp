@@ -75,7 +75,7 @@
                 @elseif(Session::get('jabatan') == 'SuperAdmin' or Session::get('nik') != null)
                     <li><a href="{{route('Semua.create')}}"><span class="uk-margin-small-right" uk-icon="icon: plus"></span> Tambah Data Pembayaran</a></li>
                     <li><a href="{{route('Semua.index')}}"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Data Pembayaran SPP</a></li>
-                    <li><a href="{{route('Status.index')}}"><span class="uk-margin-small-right" uk-icon="icon: future"></span> SPP perlu diproses</a></li>
+                    <li><a href="{{route('Proses.index')}}"><span class="uk-margin-small-right" uk-icon="icon: future"></span> SPP perlu diproses</a></li>
                     <li><a href="{{route('Approve.index')}}"><span class="uk-margin-small-right" uk-icon="icon: check"></span> Approve Pembayaran SPP</a></li>
                     <li><a href="{{route('Reject.index')}}"><span class="uk-margin-small-right" uk-icon="icon: close"></span> Reject Pembayaran SPP</a></li>
                     <li><a href="{{route('Status.index')}}"><span class="uk-margin-small-right" uk-icon="icon: history"></span> Status Pembayaran SPP</a></li>
@@ -89,10 +89,10 @@
             <li class="uk-parent">
             <a href="#"><span class="uk-margin-small-right" uk-icon="icon: database"></span> Master Data</a>
                 <ul class="uk-nav-sub">
-                <li><a href="{{route('siswa.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Data Siswa</a></li>
+                <li><a href="{{route('siswa.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Data Mahasiswa</a></li>
                 <li><a href="{{route('karyawan.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Data Karyawan</a></li>
                 <li><a href="{{route('mp.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Manajemen Password</a></li>
-                <li><a href="{{route('role.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Role</a></li>
+                <li><a href="{{route('role.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Jabatan</a></li>
                 <li><a href="{{route('kelas.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Kelas</a></li>
                 <li><a href="{{route('jurusan.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Jurusan</a></li>
                 </ul>
