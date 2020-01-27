@@ -86,7 +86,7 @@
                
                 </ul>
             </li>
-            @if(Session::get('jabatan') == 'Tata Usaha' ||  or Session::get('jabatan') == 'SuperAdmin' )
+            @if(Session::get('jabatan') == 'Tata Usaha' or Session::get('jabatan') == 'SuperAdmin' )
             <li class="uk-nav-divider"></li>
             <li class="uk-parent">
             <a href="#"><span class="uk-margin-small-right" uk-icon="icon: database"></span> Master Data</a>

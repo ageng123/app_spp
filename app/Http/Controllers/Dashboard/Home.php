@@ -21,10 +21,18 @@ class Home extends Controller
     {
         $siswa = s::count();
         $karyawan = s::count();
-
+        $date = (int)date('m');
+        if($date == 1){
+            $semester = 1;
+        } else {
+            $semester = 2;
+        }
+        var_dump($date);
+        $total_persemester = t::where('Semester', $semester)->sum('bayar');
         $data = [
             'siswa' => $siswa,
-            'karyawan' => $karyawan
+            'karyawan' => $karyawan,
+            'total_semester' => $total_persemester
         ];
         return view('templates.pages.home.home')->with($data);
     }

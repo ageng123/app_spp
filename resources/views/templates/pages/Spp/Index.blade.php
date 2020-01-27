@@ -36,13 +36,16 @@
                     <td>{{$value->Status->status_text}}</td>
                     <td class="uk-text-center">
                        <div class="uk-button-group">
+                        @if($value->Status->id != 3)    
                        <a href="{{ route('Semua.show', ['Semua' => $value->id]) }}" class="uk-button uk-button-secondary uk-button-small" title="preview" uk-tooltip><span uk-icon="icon: file-text"></span></a>
-                            <a href="{{ route('Semua.edit', ['Semua' => $value->id]) }}" class="uk-button uk-button-primary uk-button-small" title="edit" uk-tooltip> <span uk-icon="icon: file-edit"></span></a>
+                        @else    
+                        <a href="{{ route('Semua.edit', ['Semua' => $value->id]) }}" class="uk-button uk-button-primary uk-button-small" title="edit" uk-tooltip> <span uk-icon="icon: file-edit"></span></a>
                             <form action="{{route('Semua.destroy', ['Semua' => $value->id])}}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="uk-button uk-button-danger uk-button-small"><span uk-icon="icon: trash"></span></button>
                             </form>
+                        @endif
                         </div>
                        
                     </td>

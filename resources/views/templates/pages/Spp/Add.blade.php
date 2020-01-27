@@ -1,5 +1,5 @@
 @extends('templates.TemplateMasterData')
-@section('app-title', 'Master Kelas')
+@section('app-title', 'Edit Data Pembayaran SPP')
 @section('table-title')
     @if($form_title)
         {{$form_title}}
@@ -13,8 +13,10 @@
 @endif
     {!! form_start($form) !!}
     <legend class="uk-legend uk-text-center">Data Pembayaran SPP</legend>
+    {!! form_until($form, 'Simpan') !!}
     @if($edit == true)
     {!! form_row($form->Submit, ['label' => 'Update Data']) !!}
+    {!! form_end($form, $renderRest = true) !!}
     @else
     {!! form_end($form, $renderRest = true) !!}
     @endif

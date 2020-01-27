@@ -80,7 +80,12 @@ class MasterDataController extends Controller
                     } else {
                         $model->semester = 1;
                     }
-                    $model->status = '2';
+                    if($request->Submit == 'simpan'){
+                        $model->status = '1';
+
+                    }else{
+                        $model->status = '2';
+                    }
                     $model->tgl_submit = date('Y-m-d H:i:s');
                     $model->bayar = ($request->bayar / count($request->bulan));
                     $model->save();
@@ -152,16 +157,63 @@ class MasterDataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, FormBuilder $builder, Request $request)
     {
+        
         $process = $this->model->findById($id);
         $process->loadMissing('Konseptor', 'Siswa', 'Ot', 'Status', 'JabatanKonseptor', 'JabatanApprover');
-        dd($process->toArray());
+        // dd($process->toArray());
+         if($request->has('Submit')){
+            if($request->has('_token')){
+                $save = 'fail';
+                foreach($request->bulan as $bulan){
+                    $t = t::find($id);
+                    $t->kode_transaksi = '4321';
+                    $t->nama_siswa = $request->nama_siswa;
+                    $t->step = '1';
+                    $t->konseptor_nama = Session::get('id');
+                    $t->konseptor_jabatan = Session::get('role');
+                    $t->tgl_bayar = $request->tgl_bayar;
+                    $t->bulan = $bulan;
+                    $t->periode = $request->periode;
+                    $t->tahun_ajaran = $request->tahun_ajaran;
+                    if((int)$bulan <= 6){
+                        $t->semester = 2;
+                    } else {
+                        $t->semester = 1;
+                    }
+                    if($request->Submit == 'simpan'){
+                        $t->status = '1';
+
+                    }else{
+                        $t->status = '2';
+                    }
+                    $t->tgl_submit = date('Y-m-d H:i:s');
+                    $t->bayar = ($request->bayar / count($request->bulan));
+                    $save = $t->save();
+                    $save;
+                    if($save == 'fail'){
+                        return redirect()->back();
+                    } else {
+                        return redirect(route('Status.index'));
+                    }
+                };
+                // dd($save);
+            }
+        }
+        $form = $builder->create(SppFormType::class, [
+            'class' => 'uk-form-horizontal uk-grid',
+            'method' => 'POST',
+            'url' => route('Semua.edit', ['Semua' => $id]),
+            'model' => $process->toArray()
+        ]);
         $data = [
             'rows' => $process,
-            'form_title' => 'Data Spp '.$process->Siswa->nama_siswa_text.' '. date('j F Y', strtotime($process->tgl_bayar)) 
+            'form' => $form,
+            'form_title' => 'Data Spp '.$process->Siswa->nama_siswa_text.' '. date('j F Y', strtotime($process->tgl_bayar)),
+            'edit' => true
         ];
-        return view('templates.pages.Spp.Proses')->with($data);
+        return view('templates.pages.Spp.Add')->with($data);
     }
 
     /**
@@ -202,6 +254,7 @@ class MasterDataController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $query = t::destroy($id);
+        return redirect(route('Draft.index'));
     }
 }

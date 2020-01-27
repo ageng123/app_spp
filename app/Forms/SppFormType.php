@@ -41,6 +41,7 @@ class SppFormType extends Form
                 'rules' => 'required',
                 'label' => 'Nama Siswa',
                 'class' => 'App\Siswa',
+                'data' => [],
                 'property' => 'nama_siswa_text',
                 'attr' => ['class' => 'uk-select select2'],
                 'wrapper' => ['class' =>  "uk-width-1-1" ]          

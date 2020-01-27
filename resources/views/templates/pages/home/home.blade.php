@@ -32,7 +32,7 @@
                 <h4>Jumlah Pemasukan Bulanan</h4>
             </div>
             <div class="uk-card-body">
-                <h1 class="uk-text-right">26</h1>
+                <h1 class="uk-text-right">{{$total_semester}}</h1>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                 <h4>Grafik Pemasukan per Tahun</h4>
             </div>
             <div class="uk-card-body">
-                <h1 class="uk-text-right">26</h1>
+                <h1 class="uk-text-right"></h1>
             </div>
         </div>
     </div>

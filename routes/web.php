@@ -45,6 +45,7 @@ Route::group(['prefix' => 'masterdata', 'middleware' => ['check']], function(){
         Route::group(['prefix' => 'spp', 'middleware' => ['check']], function(){
         // if(session('nisn') && session('jabatan')){
         Route::post('Semua/create', 'Spp\MasterDataController@create')->name('Semua.create');
+        Route::post('Semua/{Semua}/edit', 'Spp\MasterDataController@edit')->name('Semua.create');
         Route::resource('Semua','Spp\MasterDataController');
         Route::resource('Draft','Spp\DraftController');
         Route::resource('Status','Spp\StatusController');
