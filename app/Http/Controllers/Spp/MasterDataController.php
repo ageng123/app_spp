@@ -75,6 +75,11 @@ class MasterDataController extends Controller
                     $model->bulan = $bulan;
                     $model->periode = $request->periode;
                     $model->tahun_ajaran = $request->tahun_ajaran;
+                    if((int)$bulan <= 6){
+                        $model->semester = 2;
+                    } else {
+                        $model->semester = 1;
+                    }
                     $model->status = '2';
                     $model->tgl_submit = date('Y-m-d H:i:s');
                     $model->bayar = ($request->bayar / count($request->bulan));

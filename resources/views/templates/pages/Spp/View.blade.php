@@ -21,6 +21,11 @@
         <td>{{ date('F', mktime(null,null,null,$rows->bulan)).' - '.$rows->periode }}</td>
     </tr>
     <tr>
+        <td>Semester</td>
+        <td>:</td>
+        <td>{{ 'Semester - '.$rows->semester }}</td>
+    </tr>
+    <tr>
         <td>Tahun Ajaran Siswa</td>
         <td>:</td>
         <td>{{$rows->tahun_ajaran}}</td>

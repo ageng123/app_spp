@@ -26,12 +26,8 @@ class UserCheck
         // }
         if ($this->jabatan == 'guest') {
             return redirect('auth/login');
-        } elseif ($this->jabatan == 'Siswa' and $this->path != 'spp/Semua') {
-            if($this->path != 'spp/Semua' or $this->path != 'dashboard/home'){
-                return redirect('dashboard/home');
-            } else {
+        } elseif ($this->jabatan == 'Siswa') {
                 return $next($request);
-            }
         }
         return $next($request);
 

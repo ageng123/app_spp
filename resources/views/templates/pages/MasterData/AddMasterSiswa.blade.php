@@ -1,5 +1,5 @@
 @extends('templates.TemplateMasterData')
-@section('app-title', 'Master Mahasiswa')
+@section('app-title', 'Master Siswa')
 @section('table-title')
     @if($form_title)
         {{$form_title}}

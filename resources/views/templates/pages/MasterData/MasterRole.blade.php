@@ -18,7 +18,7 @@
             <tbody>
                 @foreach($row as $rows => $value)
                 <tr>  
-                    <td>{{$value->parent ? $value->Parent->jabatan_text : ''}}</td>
+                    <td>{{$value->parent ? ($value->Parent->jabatan_text ? $value->Parent->jabatan_text : ' ') : ''}}</td>
                     <td>{{$value->jabatan_text}}</td>
                     <td class="uk-text-center">
                        <div class="uk-button-group">

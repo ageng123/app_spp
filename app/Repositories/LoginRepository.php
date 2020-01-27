@@ -26,7 +26,7 @@ class LoginRepository
                 $checkUsername->loadMissing('Detail', 'Detail.Role', 'Detail.OT', 'Detail.Siswa', 'Detail.Karyawan');
                 $checkUsername->jabatan = $checkUsername->Detail->Role->jabatan_text;
                 $checkUsername->role = $checkUsername->Detail->role;
-                if($checkUsername->jabatan == 'Mahasiswa'){
+                if($checkUsername->jabatan == 'Siswa'){
                     $checkUsername->nisn = $checkUsername->Detail->Siswa->nisn;
                     $checkUsername->nama = $checkUsername->Detail->Siswa->nama_siswa_text;
                     $checkUsername->nik_wali = $checkUsername->Detail->OT->id_orangtua;

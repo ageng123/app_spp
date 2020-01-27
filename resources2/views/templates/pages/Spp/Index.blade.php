@@ -19,6 +19,7 @@
                     <td>Tahun Ajaran</td>
                     <td>Nama Siswa</td>
                     <td>Tanggal Submit</td>
+                    <td>Semester</td>
                     <td>Status</td>
                     <td class="uk-text-center" style="width: 20%">Action</td>
                   </tr>
@@ -31,6 +32,7 @@
                     <td>{{$value->tahun_ajaran}}</td>
                     <td>{{$value->siswa->nama_siswa_text}}</td>
                     <td>{{date('d F Y', strtotime($value->tgl_submit))}}</td>
+                    <td>{{$value->semester ? $value->semester : 'Data Semester Tidak Ditemukan'}}</td>
                     <td>{{$value->Status->status_text}}</td>
                     <td class="uk-text-center">
                        <div class="uk-button-group">
