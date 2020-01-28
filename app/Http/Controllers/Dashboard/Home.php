@@ -27,7 +27,6 @@ class Home extends Controller
         } else {
             $semester = 2;
         }
-        var_dump($date);
         $total_persemester = t::where('Semester', $semester)->sum('bayar');
         $data = [
             'siswa' => $siswa,

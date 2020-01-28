@@ -32,7 +32,7 @@
                 <h4>Jumlah Pemasukan Bulanan</h4>
             </div>
             <div class="uk-card-body">
-                <h1 class="uk-text-right">{{$total_semester}}</h1>
+                <h1 class="uk-text-right currency"></h1>
             </div>
         </div>
     </div>
@@ -47,4 +47,14 @@
         </div>
     </div>
 </div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+    $(document).ready(function(){
+        let curr = {{$total_semester}};
+        console.log(curr.toLocaleString('id', {style: 'currency', currency: 'IDR'}));
+        $('.currency').text(curr.toLocaleString('id', {style: 'currency', currency: 'IDR'}));
+        // $('.currency').text('test');
+    })
+</script>  
 @endsection
