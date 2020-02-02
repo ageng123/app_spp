@@ -10,11 +10,11 @@ class KaryawanFormType extends Form
     {
         $this
             ->add('nik', 'text',  [
-                'rules' => 'required|min:9',
+                'rules' => 'required|min:9|max:15',
                 'label' => 'NIK Karyawan',
-                'attr' => ['class' => 'uk-input'],
+                'attr' => ['class' => 'uk-input', 'max' => '13'],
                 'wrapper' => ['class' =>  "uk-width-1-2" ]
-                
+
             ])
             ->add('jabatan', 'entity', [
                 'rules' => 'required',
@@ -23,28 +23,28 @@ class KaryawanFormType extends Form
                 'property' => 'jabatan_text',
                 'label' => 'Jabatan Karyawan',
                 'attr' => ['class' => 'uk-select'],
-                'wrapper' => ['class' =>  "uk-width-1-2" ]          
+                'wrapper' => ['class' =>  "uk-width-1-2" ]
             ])
             ->add('nama_karyawan_text', 'text',  [
                 'rules' => 'required',
                 'label' => 'Nama Karyawan',
                 'attr' => ['class' => 'uk-input'],
                 'wrapper' => ['class' =>  "uk-width-1-1" ]
-                
+
             ])
             ->add('tpt_lahir', 'text',  [
                 'rules' => 'required',
                 'label' => 'Tempat Lahir',
                 'attr' => ['class' => 'uk-input'],
                 'wrapper' => ['class' =>  "uk-width-1-2" ]
-                
+
             ])
             ->add('tgl_lahir', 'date', [
                 'rules' => 'required',
                 'label' => 'Tanggal Lahir',
                 'attr' => ['class' => 'uk-input'],
                 'wrapper' => ['class' =>  "uk-width-1-2" ]
-                
+
             ])
             ->add('jk', 'select', [
                 'rules' => 'required',
@@ -52,20 +52,20 @@ class KaryawanFormType extends Form
                 'choices' => ['L' => 'Laki-Laki', 'P' => 'Perempuan'],
                 'empty_value' => 'Pilih Jenis Kelamin',
                 'attr' => ['class' => 'uk-select'],
-                'wrapper' => ['class' =>  "uk-width-1-1" ]          
+                'wrapper' => ['class' =>  "uk-width-1-1" ]
             ])
             ->add('alamat', 'textarea', [
                 'rules' => 'required',
                 'label' => 'Alamat Karyawan',
                 'attr' => ['class' => 'uk-textarea'],
-                'wrapper' => ['class' =>  "uk-width-1-1" ]          
+                'wrapper' => ['class' =>  "uk-width-1-1" ]
             ])
             ->add('no_telp', 'text',  [
                 'rules' => 'required|min: 10',
                 'label' => 'No_telp',
                 'attr' => ['class' => 'uk-input'],
                 'wrapper' => ['class' =>  "uk-width-1-1" ]
-                
+
             ])
             ->add('Submit', 'submit', [
                 'attr' => ['class' => 'uk-button uk-button-primary uk-button-large uk-width-1-1', 'name' => 'Submit'],

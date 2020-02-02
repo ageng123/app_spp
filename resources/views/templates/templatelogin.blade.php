@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="uk-card-body">
                                     <center>
-                                    <h2 class="uk-text-large uk-text-bold">STIKOMCKI</h2>
+                                    <h2 class="uk-text-large uk-text-bold">SMK PGRI 8</h2>
                                     </center>
                                         @yield('loginform')
                                 </div>

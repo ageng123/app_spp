@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Repositories;
 
 use Hash;
@@ -33,15 +33,16 @@ class LoginRepository
                     $checkUsername->nama_wali = $checkUsername->Detail->OT->nama_orangtua_text;
                     $checkUsername->no_telp = $checkUsername->Detail->OT->no_telp;
                     $checkUsername->jurusan = $checkUsername->Detail->Siswa->Jurusan->jurusan_text;
-                    $checkUsername->kelas = $checkUsername->Detail->Siswa->Kelas->kelas_text;    
+                    $checkUsername->kelas = $checkUsername->Detail->Siswa->Kelas->kelas_text;
                 } elseif($checkUsername->jabatan == 'Wali Murid'){
                     $checkUsername->nama = $checkUsername->Detail->OT->nama_orangtua_text;
                     $checkUsername->nama_siswa = $checkUsername->Detail->Siswa->nama_siswa_text;
                     $checkUsername->jurusan = $checkUsername->Detail->Siswa->Jurusan->jurusan_text;
-                    $checkUsername->kelas = $checkUsername->Detail->Siswa->Kelas->kelas_text;    
+                    $checkUsername->kelas = $checkUsername->Detail->Siswa->Kelas->kelas_text;
                 } else {
-                    if($checkUsername->role == 99){
+                    if($checkUsername->role == 0){
                         $checkUsername->nama = 'superadmin';
+                        $checkUsername->nik = 'admin';
                     } else {
                         $checkUsername->nama = $checkUsername->Detail->Karyawan->nama_karyawan_text;
                         $checkUsername->nik = $checkUsername->Detail->Karyawan->nik;
@@ -67,7 +68,7 @@ class LoginRepository
     {
        $logout = Session::flush();
        return redirect(route('auth.login'));
-        
+
     }
 }
 ?>

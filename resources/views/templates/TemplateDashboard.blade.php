@@ -64,7 +64,7 @@
             <br />
         </center>
         <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
-            
+
             <li><a href="{{route('auth.home')}}"><span class="uk-margin-small-right" uk-icon="icon: home"></span> Home</a></li>
             <li class="uk-nav-divider"></li>
             <li class="uk-parent">
@@ -74,7 +74,7 @@
                 <li><a href="{{route('Semua.index')}}"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Data Pembayaran SPP</a></li>
                 <li><a href="{{route('Semua.create')}}"><span class="uk-margin-small-right" uk-icon="icon: plus"></span> Tambah Data Pembayaran</a></li>
                 <li><a href="{{route('Status.index')}}"><span class="uk-margin-small-right" uk-icon="icon: history"></span> Status Pembayaran SPP</a></li>
-            @elseif(Session::get('jabatan') == 'SuperAdmin' or Session::get('nik') != null)
+            @elseif(Session::get('jabatan') == 'Admin' or Session::get('nik') != null)
                     <li><a href="{{route('Semua.create')}}"><span class="uk-margin-small-right" uk-icon="icon: plus"></span> Tambah Data Pembayaran</a></li>
                     <li><a href="{{route('Semua.index')}}"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Data Pembayaran SPP</a></li>
                     <li><a href="{{route('Proses.index')}}"><span class="uk-margin-small-right" uk-icon="icon: future"></span> SPP perlu diproses</a></li>
@@ -83,10 +83,10 @@
                     <li><a href="{{route('Status.index')}}"><span class="uk-margin-small-right" uk-icon="icon: history"></span> Status Pembayaran SPP</a></li>
                     <li><a href="{{route('Draft.index')}}"><span class="uk-margin-small-right" uk-icon="icon: folder"></span> Draft Pembayaran SPP</a></li>
                 @endif()
-               
+
                 </ul>
             </li>
-            @if(Session::get('jabatan') == 'Tata Usaha' or Session::get('jabatan') == 'SuperAdmin' )
+            @if(Session::get('jabatan') == 'Tata Usaha' or Session::get('jabatan') == 'Admin' )
             <li class="uk-nav-divider"></li>
             <li class="uk-parent">
             <a href="#"><span class="uk-margin-small-right" uk-icon="icon: database"></span> Master Data</a>

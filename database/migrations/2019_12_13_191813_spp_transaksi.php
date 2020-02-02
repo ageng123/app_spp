@@ -30,6 +30,7 @@ class SppTransaksi extends Migration
             $table->string('periode');
             $table->string('tahun_ajaran');
             $table->bigInteger('status');
+            $table->string('semester');
             $table->timestamp('tgl_submit');
             $table->timestamp('tgl_approve');
             $table->timestamps();
