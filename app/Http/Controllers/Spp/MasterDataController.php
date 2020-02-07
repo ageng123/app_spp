@@ -40,7 +40,6 @@ class MasterDataController extends Controller
      */
     public function index()
     {
-        dd(Session::all());
         $rows = $this->model->getAll();
         $rows->loadMissing('Konseptor', 'Siswa', 'Ot', 'Status', 'JabatanKonseptor', 'JabatanApprover');
         $data = [
