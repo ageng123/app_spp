@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 //Service Import
 use Session;
 use App\Services\TransactionRepositoryServices as TRS;
+use Illuminate\Support\Facades\DB;
+
 use PDF;
 //Model Import
 use App\Status_transaksi as st;
@@ -29,7 +31,7 @@ class MasterDataController extends Controller
     protected $model;
     public function __construct(TRS $trs)
     {
-        $this->model = $trs; 
+        $this->model = $trs;
     }
     /**
      * Display a listing of the resource.
@@ -38,8 +40,7 @@ class MasterDataController extends Controller
      */
     public function index()
     {
-        // dd(Session::all());
-        // die;
+        
         $rows = $this->model->getAll();
         $rows->loadMissing('Konseptor', 'Siswa', 'Ot', 'Status', 'JabatanKonseptor', 'JabatanApprover');
         $data = [
@@ -81,11 +82,11 @@ class MasterDataController extends Controller
                         $model->semester = 1;
                     }
                     if($request->Submit == 'simpan'){
-                        $model->status = '1';
+                        $model->status = '5';
 
                     }else{
-                        $model->status = '2';
-                    }
+                        $model->status = '1';
+                    } 
                     $model->tgl_submit = date('Y-m-d H:i:s');
                     $model->bayar = ($request->bayar / count($request->bulan));
                     $model->save();
@@ -112,9 +113,47 @@ class MasterDataController extends Controller
             'method' => 'POST',
             'url' => route('Semua.print')
         ]);
-        if($request->has('Submit') || Session::get('role') == 2 || Session::get('role') == 1){
-                dd($request->toArray());
-                
+        // dd(Session::all());
+        if($request->has('Submit') and (Session::get('role') == 2 or Session::get('role') == 1)){
+
+        } else {
+          setlocale(LC_MONETARY, 'id_ID');
+          $tableData = DB::table('laporan_spp')->get();
+          $periode;
+          $row = [];
+          $result;
+          $x = 1;
+          foreach($tableData as $row_value){
+            $periode = $row_value->periode;
+            $row[] .= '<tr>';
+            $row[] .= '<td>'.$x.'</td>';
+            $row[] .= '<td>'.$row_value->nisn.'</td>';
+            $row[] .= '<td>'.$row_value->nama_siswa_text.'</td>';
+            $row[] .= '<td>'.$row_value->jk.'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->januari))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->februari))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->maret))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->april))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->mei))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->juni))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->juli))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->agustus))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->september))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->oktober))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->november))).'</td>';
+            $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->desember))).'</td>';
+            $row[] .= '<tr>';
+            $x++;
+
+          }
+          $result = implode('', $row);
+          $dataprint = [
+            'result' => $result,
+            'periode' => $periode
+          ];
+          // $pdf = PDF::loadView('templates.pages.print.laporan', $dataprint)->setPaper('a4', 'landscape');
+          return view('templates.pages.print.laporan')->with($dataprint);
+          // return $pdf->stream(date('j F Y').'laporan spp.pdf');
         }
         $data = [
             'form' => $form,
@@ -147,7 +186,7 @@ class MasterDataController extends Controller
         // dd($process->toArray());
         $data = [
             'rows' => $process,
-            'form_title' => 'Data Spp '.$process->Siswa->nama_siswa_text.' '. date('j F Y', strtotime($process->tgl_bayar)) 
+            'form_title' => 'Data Spp '.$process->Siswa->nama_siswa_text.' '. date('j F Y', strtotime($process->tgl_bayar))
         ];
         return view('templates.pages.Spp.View')->with($data);
     }
@@ -160,7 +199,7 @@ class MasterDataController extends Controller
      */
     public function edit($id, FormBuilder $builder, Request $request)
     {
-        
+
         $process = $this->model->findById($id);
         $process->loadMissing('Konseptor', 'Siswa', 'Ot', 'Status', 'JabatanKonseptor', 'JabatanApprover');
         // dd($process->toArray());
@@ -184,10 +223,10 @@ class MasterDataController extends Controller
                         $t->semester = 1;
                     }
                     if($request->Submit == 'simpan'){
-                        $t->status = '1';
+                        $t->status = '5';
 
                     }else{
-                        $t->status = '2';
+                        $t->status = '1';
                     }
                     $t->tgl_submit = date('Y-m-d H:i:s');
                     $t->bayar = ($request->bayar / count($request->bulan));

@@ -77,13 +77,13 @@ class MasterSiswaController extends Controller
                 $du_siswa->nisn = $request->nisn;
                 $du_siswa->id_orangtua = $request->id_orangtua;
                 $du_siswa->id_user = $mu_siswa->id;
-                $du_siswa->role = '1';
+                $du_siswa->role = '2';
                 $du_siswa->save();
                 $du_wali = new du;
                 $du_wali->nisn = $request->nisn;
                 $du_wali->id_orangtua = $request->id_orangtua;
                 $du_wali->id_user = $mu_ortu->id;
-                $du_wali->role = '2';
+                $du_wali->role = '1';
                 $du_wali->save();
                 return $save ? redirect(route('siswa.index'))->with('message', 'Data Siswa Berhasil Ditambahkan') : redirect()->back()->with('message', $request->nama." Gagal Ditambahkan ") ;
             };
@@ -121,11 +121,11 @@ class MasterSiswaController extends Controller
         $model['nama_orangtua_text'] = $model->Detail_User->OT->nama_orangtua_text;
         $model['id_orangtua'] = $model->Detail_User->OT->id_orangtua;
         $model['no_telp'] = $model->Detail_User->OT->no_telp;
-        
+
         $data = [
             'data' => $model,
             'form_title' => 'Preview Data Master Siswa',
-        ];  
+        ];
         return view('templates.pages.MasterData.PreviewMasterSiswa')->with($data);
     }
 
@@ -155,7 +155,7 @@ class MasterSiswaController extends Controller
             'form' => $form,
             'form_title' => 'Edit Data Master Siswa',
             'edit' => true
-        ];  
+        ];
         return view('templates.pages.MasterData.AddMasterSiswa')->with($data);
     }
 

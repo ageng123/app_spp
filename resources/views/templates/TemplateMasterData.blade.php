@@ -35,6 +35,7 @@
             });
             $('#table_filter input').addClass('uk-input');
             $('#table_filter label').addClass('hidden');
+            $('.flatpicker').flatpickr();
         });
     </script>
 @endsection

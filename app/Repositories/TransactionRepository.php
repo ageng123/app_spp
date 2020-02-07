@@ -28,7 +28,7 @@ class TransactionRepository
     public function getall()
     {
         $params = null;
-        if($this->jabatan == 1){
+        if($this->jabatan == 2){
             $params = Session::get('detail.siswa.id');
         }
         if($this->jabatan == 99 || $this->jabatan == 3){
@@ -66,11 +66,11 @@ class TransactionRepository
         })->get();
     }
     public function getDraft(){
-        $status = '1';
+        $status = '5';
         return $this->getTransaksiByStatus($status);
     }
     public function getStatus(){
-        $status = '2';
+        $status = '1';
         return $this->getTransaksiByStatus($status);
     }
     public function getRejected(){
@@ -82,10 +82,10 @@ class TransactionRepository
         return $this->getTransaksiByStatus($status);
     }
     public function getProses(){
-        $status = '2';
+        $status = '1';
         return $this->prosesData($status);
     }
-    
+
 }
 
 ?>

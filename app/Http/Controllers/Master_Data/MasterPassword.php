@@ -19,7 +19,7 @@ class MasterPassword extends Controller
     public function index()
     {
         $mu = mu::with(['Detail', 'Detail.OT', 'Detail.Siswa', 'Detail.Karyawan', 'Detail.Role'])->get();
-        // dd($mu->toArray()); 
+        // dd($mu->toArray());
         $data = [
             'row' => $mu
         ];
@@ -33,7 +33,11 @@ class MasterPassword extends Controller
      */
     public function create()
     {
-        //
+        $mu = new mu;
+        $mu->username = 'admin';
+        $mu->password = Hash::make('4321');
+
+        echo "sukses add/admin".$mu->save();
     }
 
     /**
@@ -79,7 +83,7 @@ class MasterPassword extends Controller
             'form' => $form,
             'form_title' => 'Edit Data Master Data User',
             'edit' => true
-        ];  
+        ];
         return view('templates.pages.MasterData.AddMasterUser')->with($data);
 
         }

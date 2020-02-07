@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/addAdmin', 'Master_Data\MasterPassword@create');
 Route::get('/', function(){
     return redirect()->route('auth.login');
 });
@@ -23,7 +23,7 @@ Route::group(['prefix' => 'auth'], function(){
 });
 Route::group(['prefix' => 'dashboard'], function(){
     Route::get('/home', 'Dashboard\home@index')->name('auth.home')->middleware('check');
-    
+
 });
 Route::group(['prefix' => 'masterdata', 'middleware' => ['check']], function(){
         // if(session('nisn') && session('jabatan')){

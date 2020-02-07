@@ -9,7 +9,7 @@
     <table id="table" class="uk-table uk-table-hover uk-table-striped">
         <a href="{{ route('karyawan.create') }}" class="uk-button uk-button-primary uk-button-small">Tambah Data</a>
             <thead>
-                  <tr>  
+                  <tr>
                     <td>No. Urut</td>
                     <td>No. Induk Kepegawaian</td>
                     <td>Jabatan</td>
@@ -22,10 +22,16 @@
             </thead>
             <tbody>
                 @foreach($row as $rows => $value)
-                <tr>  
+                <tr>
                 <td>{{ $rows + 1 }}</td>
                     <td>{{$value->nik}}</td>
-                    <td>{{$value->Detail->Role->jabatan_text}}</td>
+                    <td>
+                      @IF(isset($value->Detail->Role->jabatan_text))
+                        {{$value->Detail->Role->jabatan_text}}
+                      @else
+                        {{'No Jabatan'}}
+                      @endif
+                    </td>
                     <td>{{$value->nama_karyawan_text}}</td>
                     <td>{{$value->tpt_lahir}} / {{$value->tgl_lahir}}</td>
                     <td>{{$value->alamat}}</td>
@@ -40,7 +46,7 @@
                                 <button type="submit" class="uk-button uk-button-danger uk-button-small"><span uk-icon="icon: trash"></span></button>
                             </form>
                         </div>
-                       
+
                     </td>
                   </tr>
                 @endforeach

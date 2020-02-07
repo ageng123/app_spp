@@ -3,50 +3,46 @@
 namespace App\Forms;
 
 use Kris\LaravelFormBuilder\Form;
+use Session;
 
 class PrintSppFormType extends Form
 {
-    protected $periode;
-    protected $tahun_ajaran;
-    protected $bulan;
+    protected $siswa;
+    protected $type;
+    protected $choices;
+    protected $semester;
     public function __construct(){
-        $this->bulan = [
-            1 => 'Januari', 
-            2 => 'Februari',
-            3 => 'Maret',
-            4 => 'April',
-            5 => 'Mei',
-            6 => 'Juni',
-            7 => 'Juli', 
-            8 => 'Agustus',
-            9 => 'September',
-            10 => 'Oktober',
-            11 => 'November',
-            12 => 'Desember'
+        $this->semester = [
+            1 => 'Semester 1',
+            2 => 'Semester 2',
         ];
+        if(Session::get('role') == '2' or Session::get('role') == '1'){
+          $this->siswa = [
+              Session::get('detail.nisn') => Session::get('nama_siswa')
+            ] ;
+          $this->type = 'select';
+          $this->choices = 'choices';
+        } else {
+          $this->siswa = 'App\Siswa';
+          $this->type = 'entity';
+          $this->choices = 'class';
+        }
         $now = date("Y");
-        for($i = $now - 5; $i <= $now + 5 ; $i++ ){
-            $this->periode[$i] = $i;
-        }
-        for($i = $now - 5; $i <= $now + 5 ; $i++ ){
-            $a = $i + 1;
-            $this->tahun_ajaran[$i.'/'.$a] = $i.'/'.$a;
-        }
     }
     public function buildForm()
     {
-        $this->add('nama_siswa', 'entity', [
+        $this->add('nama_siswa', $this->type, [
             'rules' => 'required',
             'label' => 'Nama Siswa',
-            'class' => 'App\Siswa',
+            $this->choices => $this->siswa,
             'property' => 'nama_siswa_text',
             'attr' => ['class' => 'uk-select select2'],
-            'wrapper' => ['class' =>  "uk-width-1-1" ] 
+            'wrapper' => ['class' =>  "uk-width-1-1" ]
         ])
         ->add('periode', 'select', [
             'rules' => 'required',
             'label' => 'Periode',
-            'choices' => $this->periode,
+            'choices' => $this->semester,
             'attr' => ['class' => 'uk-select select2'],
             'wrapper' => ['class' =>  "uk-width-1-1" ]
         ])

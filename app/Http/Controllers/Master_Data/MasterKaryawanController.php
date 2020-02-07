@@ -99,7 +99,7 @@ class MasterKaryawanController extends Controller
         $data = [
             'data' => $model,
             'form_title' => 'Preview Data Master Siswa',
-        ];  
+        ];
         return view('templates.pages.MasterData.PreviewMasterKaryawan')->with($data);
     }
 
