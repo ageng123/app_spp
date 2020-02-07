@@ -40,8 +40,7 @@ class MasterDataController extends Controller
      */
     public function index()
     {
-        // dd(Session::all());
-        // die;
+        
         $rows = $this->model->getAll();
         $rows->loadMissing('Konseptor', 'Siswa', 'Ot', 'Status', 'JabatanKonseptor', 'JabatanApprover');
         $data = [
@@ -83,11 +82,11 @@ class MasterDataController extends Controller
                         $model->semester = 1;
                     }
                     if($request->Submit == 'simpan'){
-                        $model->status = '1';
+                        $model->status = '5';
 
                     }else{
-                        $model->status = '2';
-                    }
+                        $model->status = '1';
+                    } 
                     $model->tgl_submit = date('Y-m-d H:i:s');
                     $model->bayar = ($request->bayar / count($request->bulan));
                     $model->save();
@@ -224,10 +223,10 @@ class MasterDataController extends Controller
                         $t->semester = 1;
                     }
                     if($request->Submit == 'simpan'){
-                        $t->status = '1';
+                        $t->status = '5';
 
                     }else{
-                        $t->status = '2';
+                        $t->status = '1';
                     }
                     $t->tgl_submit = date('Y-m-d H:i:s');
                     $t->bayar = ($request->bayar / count($request->bulan));

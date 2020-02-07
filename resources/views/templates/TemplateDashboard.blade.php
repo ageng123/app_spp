@@ -19,7 +19,7 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="{{asset('js/uikit.js')}}"></script>
     <script src="{{asset('js/uikit-icons.min.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body>
@@ -121,7 +121,6 @@
     <script src="{{asset('js/status.js')}}"></script>
     <script src="{{asset('js/notification.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @yield('javascript')
 
 </body>

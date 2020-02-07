@@ -1,5 +1,5 @@
 @extends('templates.TemplateMasterData')
-@section('app-title', 'Edit Data Pembayaran SPP')
+@section('app-title', 'Tambah Data Pembayaran SPP')
 @section('table-title')
     @if($form_title)
         {{$form_title}}
@@ -29,6 +29,7 @@
         altInput: true,
         altFormat: "F j, Y",
         dateFormat: "Y-m-d",
+        defaultDate: "<?php echo date('Y-m-d'); ?>"
     });
 });
 </script>

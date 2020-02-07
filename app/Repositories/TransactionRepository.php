@@ -28,7 +28,7 @@ class TransactionRepository
     public function getall()
     {
         $params = null;
-        if($this->jabatan == 1){
+        if($this->jabatan == 2){
             $params = Session::get('detail.siswa.id');
         }
         if($this->jabatan == 99 || $this->jabatan == 3){
