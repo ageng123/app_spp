@@ -40,7 +40,7 @@ class MasterDataController extends Controller
      */
     public function index()
     {
-        
+        dd(Session::all());
         $rows = $this->model->getAll();
         $rows->loadMissing('Konseptor', 'Siswa', 'Ot', 'Status', 'JabatanKonseptor', 'JabatanApprover');
         $data = [
@@ -115,7 +115,34 @@ class MasterDataController extends Controller
         ]);
         // dd(Session::all());
         if($request->has('Submit') and (Session::get('role') == 2 or Session::get('role') == 1)){
-
+            setlocale(LC_MONETARY, 'id_ID');
+            $tableData = DB::table('laporan_spp')->where('nisn = '.Session::get('nomor_induk'))->get();
+            $periode;
+            $row = [];
+            $result;
+            $x = 1;
+            foreach($tableData as $row_value){
+              $periode = $row_value->periode;
+              $row[] .= '<tr>';
+              $row[] .= '<td>'.$x.'</td>';
+              $row[] .= '<td>'.$row_value->nisn.'</td>';
+              $row[] .= '<td>'.$row_value->nama_siswa_text.'</td>';
+              $row[] .= '<td>'.$row_value->jk.'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->januari))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->februari))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->maret))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->april))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->mei))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->juni))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->juli))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->agustus))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->september))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->oktober))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->november))).'</td>';
+              $row[] .= '<td>'.str_replace(',','.',(number_format($row_value->desember))).'</td>';
+              $row[] .= '<tr>';
+              $x++;
+            }
         } else {
           setlocale(LC_MONETARY, 'id_ID');
           $tableData = DB::table('laporan_spp')->get();
