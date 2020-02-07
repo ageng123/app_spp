@@ -10,9 +10,13 @@
     "require": {
         "php": "^7.2",
         "barryvdh/laravel-dompdf": "^0.8.5",
-        "doctrine/dbal": "^2.10",
+        "beberlei/doctrineextensions": "^1.2",
+        "doctrine/dbal": "^2.5",
+        "doctrine/orm": "^2.6",
         "fideloper/proxy": "^4.0",
+        "gedmo/doctrine-extensions": "^2.4",
         "kris/laravel-form-builder": "^1.22",
+        "laravel-doctrine/orm": "^1.5",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0"
     },

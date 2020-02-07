@@ -114,6 +114,7 @@ class MasterDataController extends Controller
         ]);
         if($request->has('Submit') || Session::get('role') == 2 || Session::get('role') == 1){
                 dd($request->toArray());
+                
         }
         $data = [
             'form' => $form,

@@ -29,7 +29,7 @@
     <div class="uk-width-1-3@xl uk-width-1-2@m uk-width-1-1@sm">
         <div class="uk-card uk-card-primary ">
             <div class="uk-card-header">
-                <h4>Jumlah Pemasukan Bulanan</h4>
+                <h4>Jumlah Pemasukan Semester Ini</h4>
             </div>
             <div class="uk-card-body">
                 <h1 class="uk-text-right currency"></h1>
